@@ -8,5 +8,5 @@ alias gpl='git pull'
 alias buatbalik='sudo nixos-rebuild switch'
 alias upug='sudo nixos-rebuild switch --upgrade'
 alias listgen='sudo nix-env -p /nix/var/nix/profiles/system --list-generations'
-alias deletegen='sudo nix-env -p /nix/var/nix/profiles/system --list-generations'
+alias deletegen='sudo nix-env -p /nix/var/nix/profiles/system --delete-generations'
 
