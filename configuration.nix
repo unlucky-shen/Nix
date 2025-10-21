@@ -2,11 +2,11 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan
+    [
       ./hardware-configuration.nix
     ];
 
-  # NVIDIA OPTIMUS PRIME (OFFLOAD CONFIGURATION)
+  # NVIDIA OPTIMUS (OFFLOAD CONFIGURATION)
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {
     modesetting.enable = true;
@@ -29,7 +29,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "Omega";
+  # HOST
+  networking.hostName = "Tau";
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # NETWORK PROXY (IF NECESSARY)
@@ -100,9 +101,7 @@
     packages = with pkgs; [];
   };
 
-  # NIX CONFIGURED PACKAGES
-  programs.gnome-shell.enable = true;
-  programs.firefox.enable = true;
+  # NIXOS CONFIGURED PACKAGES
   programs.steam.enable = true;
   programs.steam.gamescopeSession.enable = true;
   programs.gamemode.enable = true;
@@ -137,14 +136,12 @@ kitty
 tmux
 spotify
 zathura
+
+# Gnome essentials
+gnomeExtensions.appindicator
+gnomeExtensions.blur-my-shell
 gnome-tweaks
 ];
-
-  # GNOME EXTENSIONS
-  environment.systemPackages = with pkgs.gnomeExtensions; [
-    appindicator
-    blur-my-shell
-  ];
 
   # SUID WRAPPERS (CAN BE CONFIGURED FURTHER OR STARTED IN USER SESSIONS)
   # programs.mtr.enable = true;
