@@ -2,28 +2,28 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [ # Include the results of the hardware scan
       ./hardware-configuration.nix
     ];
 
-  # Bootloader.
+  # BOOTLOADER
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "Omega";
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  # Configure network proxy if necessary
+  # NETWORK PROXY (IF NECESSARY)
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # Enable networking
+  # ENABLE NETWORKING
   networking.networkmanager.enable = true;
 
-  # Time zone.
+  # TIME ZONE
   time.timeZone = "Asia/Kuala_Lumpur";
 
-  # Select internationalisation properties.
+  # INTERNATIONALISATION PROPERTIES
   i18n.defaultLocale = "en_US.UTF-8";
 
   i18n.extraLocaleSettings = {
@@ -38,23 +38,23 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  # Enable the X11 windowing system.
+  # ENABLE X11 WINDOWING SYSTEM
   services.xserver.enable = true;
 
-  # Enable the GNOME Desktop Environment.
+  # ENABLE GNOME DESKTOP ENVIRONMENT
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
-  # Configure keymap in X11
+  # CONFIGURE KEYMAP IN X11
   services.xserver.xkb = {
     layout = "us";
     variant = "";
   };
 
-  # Enable CUPS to print documents.
+  # CUPS FOR DOCUMENT PRINTING
   services.printing.enable = true;
 
-  # Enable sound with pipewire.
+  # ENABLE SOUND (PIPEWIRE)
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -73,26 +73,24 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  # USER ACCOUNT
   users.users.shen = {
     isNormalUser = true;
     description = "shen";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-    #  thunderbird
-    ];
+    packages = with pkgs; [];
   };
 
-  # Pre-Installs
+  # NIX CONFIGURED PACKAGES
   programs.firefox.enable = true;
   programs.steam.enable = true;
 
-  # Allow unfree packages
+  # ALLOW UNFREE PACKAGES
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; 
 [
-# ----- Core Utils -----
+# Core Utils
 wget
 curl
 git
@@ -102,7 +100,7 @@ xclip
 unzip
 openssh
 
-# ----- Dev Tools -----
+# Dev Tools
 gcc
 gnumake
 python3
@@ -111,7 +109,7 @@ go
 rustup
 texlive.combined.scheme-full
 
-# ----- Apps -----
+# Apps
 kitty
 tmux
 spotify
@@ -119,8 +117,7 @@ zathura
 gnome-tweaks
 ];
   
-  services.flatpak.enable = true;
-  
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -129,12 +126,16 @@ gnome-tweaks
   #   enableSSHSupport = true;
   # };
 
-  # List services that you want to enable:
+  # SYSTEM SERVICES
 
-  # Enable the OpenSSH daemon.
+  # Flatpak
+  services.flatpak.enable = true;
+  # Run in bash = flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+
+  # Openssh Daemon
   # services.openssh.enable = true;
 
-  # Open ports in the firewall.
+  # Firewall Ports
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
@@ -142,5 +143,4 @@ gnome-tweaks
 
 
   system.stateVersion = "25.05";
-
 }
