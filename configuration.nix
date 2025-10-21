@@ -6,6 +6,25 @@
       ./hardware-configuration.nix
     ];
 
+  # NVIDIA OPTIMUS PRIME (OFFLOAD CONFIGURATION)
+  services.xserver.videoDrivers = [ "nvidia" ];
+  hardware.nvidia = {
+    modesetting.enable = true;
+    powerManagement.enable = true;
+    open = false;
+    nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.production;
+
+    prime = {
+      offload = {
+        enable = true;
+        enableOffloadCmd = true;
+      };
+      intelBusId = "PCI:0:2:0";
+      nvidiaBusId = "PCI:1:0:0";
+    };
+  };
+
   # BOOTLOADER
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -117,7 +136,12 @@ spotify
 zathura
 gnome-tweaks
 ];
-  
+
+  # GNOME EXTENSIONS
+  environment.systemPackages = with pkgs.gnomeExtensions; [
+    appindicator
+    blur-my-shell
+  ];
 
   # SUID WRAPPERS (CAN BE CONFIGURED FURTHER OR
   # STARTED IN USER SESSIONS
