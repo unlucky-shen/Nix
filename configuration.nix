@@ -70,7 +70,7 @@
     #media-session.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
+  # TOUCHPAD SUPPORT (ENABLED BY DEFAULT IN MOST DESKTOPMANAGER).
   # services.xserver.libinput.enable = true;
 
   # USER ACCOUNT
@@ -88,6 +88,7 @@
   # ALLOW UNFREE PACKAGES
   nixpkgs.config.allowUnfree = true;
 
+  # SYSTEM PACKAGES
   environment.systemPackages = with pkgs; 
 [
 # Core Utils
@@ -118,8 +119,8 @@ gnome-tweaks
 ];
   
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
+  # SUID WRAPPERS (CAN BE CONFIGURED FURTHER OR
+  # STARTED IN USER SESSIONS
   # programs.mtr.enable = true;
   # programs.gnupg.agent = {
   #   enable = true;
@@ -127,7 +128,6 @@ gnome-tweaks
   # };
 
   # SYSTEM SERVICES
-
   # Flatpak
   services.flatpak.enable = true;
   # Run in bash = flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
