@@ -101,8 +101,11 @@
   };
 
   # NIX CONFIGURED PACKAGES
+  programs.gnome-shell.enable = true;
   programs.firefox.enable = true;
   programs.steam.enable = true;
+  programs.steam.gamescopeSession.enable = true;
+  programs.gamemode.enable = true;
 
   # ALLOW UNFREE PACKAGES
   nixpkgs.config.allowUnfree = true;
@@ -143,8 +146,7 @@ gnome-tweaks
     blur-my-shell
   ];
 
-  # SUID WRAPPERS (CAN BE CONFIGURED FURTHER OR
-  # STARTED IN USER SESSIONS
+  # SUID WRAPPERS (CAN BE CONFIGURED FURTHER OR STARTED IN USER SESSIONS)
   # programs.mtr.enable = true;
   # programs.gnupg.agent = {
   #   enable = true;
@@ -165,6 +167,6 @@ gnome-tweaks
   # Or disable the firewall altogether.
   networking.firewall.enable = true;
 
-
+  # SYSTEM STATE VERSION
   system.stateVersion = "25.05";
 }
