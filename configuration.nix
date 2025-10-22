@@ -72,7 +72,7 @@
   };
 
   # CUPS FOR DOCUMENT PRINTING
-  services.printing.enable = true;
+  # services.printing.enable = true;
 
   # ENABLE SOUND (PIPEWIRE)
   services.pulseaudio.enable = false;
@@ -125,11 +125,16 @@ openssh
 # Dev Tools
 gcc
 gnumake
+cmake
 python3
 nodejs_22
 go
 rustup
 texlive.combined.scheme-full
+R # R Language
+	(rWrapper.override { 
+      		packages = with rPackages; [ languageserver rmarkdown dplyr ggplot2 readr readxl writexl ];
+    	}) # R Packages
 
 # Apps
 kitty
@@ -142,7 +147,7 @@ gnomeExtensions.appindicator
 gnomeExtensions.blur-my-shell
 gnome-tweaks
 ];
-
+  
   # SUID WRAPPERS (CAN BE CONFIGURED FURTHER OR STARTED IN USER SESSIONS)
   # programs.mtr.enable = true;
   # programs.gnupg.agent = {
@@ -153,7 +158,7 @@ gnome-tweaks
   # SYSTEM SERVICES
   # Flatpak
   services.flatpak.enable = true;
-  # Run in bash = flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+  # Remote, flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
   # Openssh Daemon
   # services.openssh.enable = true;
