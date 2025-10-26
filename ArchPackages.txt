@@ -1,0 +1,53 @@
+# ---- Core Utils
+
+wget
+curl
+git
+flatpak
+neovim
+htop
+xclip
+unzip
+openssh
+ufw
+
+# ---- Dev Tools
+
+gcc
+python
+nodejs
+npm (Download tree-sitter-cli from : npm install -g tree-sitter-cli )
+rustup
+go
+	
+# ---- TeXLive Packages 
+
+texlive-meta
+
+For a minimal install,
+
+texlive-core 
+texlive-latexrecommended 
+texlive-latexextra 
+texlive-fontsrecommended
+
+To add packages later on,
+
+	sudo tlmgr update --self
+
+	sudo tlmgr install <packages>
+
+
+# ---- GNOME Tools
+
+gnome-tweaks
+gnome-extensions-cli
+gnome-browser-connector (if using GNOME browser extension)
+
+# ---- Applications
+
+kitty
+tmux
+fastfetch
+zathura
+steam # -> Enable multilib in /etc/pacman.conf first!
