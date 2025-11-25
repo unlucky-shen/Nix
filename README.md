@@ -26,3 +26,7 @@ sudo chmod +x /usr/local/bin/nvidia-offload
 ```
 nvidia-offload gamemoderun gamescope -w 1920 -h 1080 -- %command%
 ```
+### Todo List
+- [ ] Migrate config to flakes
+- [ ] Change neovim config to nixvim
+- [ ] Change DE to WM (Hyprland) 
