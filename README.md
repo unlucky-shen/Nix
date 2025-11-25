@@ -19,3 +19,10 @@ III. Make it executable,
 ```
 sudo chmod +x /usr/local/bin/nvidia-offload
 ```
+### Steam Launch Options
+1. In Steam -> Game Properties -> Launch Options
+
+2. Paste below in "Launch Options" box,
+```
+nvidia-offload gamemoderun gamescope -w 1920 -h 1080 -- %command%
+```
