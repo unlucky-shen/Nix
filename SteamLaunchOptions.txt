@@ -1,6 +1,0 @@
-In Steam -> Game Properties -> Launch Options,
-
-In General Tab, paste the below in the "Launch Options" box,
-
-	nvidia-offload gamemoderun gamescope -w 1920 -h 1080 -- %command%
-
