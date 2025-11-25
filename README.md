@@ -1,4 +1,4 @@
-# Communix
+# Communix ☭
 
 ### Nvidia Optimus PRIME Wrapper Script
 
