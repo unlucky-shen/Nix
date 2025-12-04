@@ -6,44 +6,49 @@
       ./hardware-configuration.nix
     ];
 
-  # NVIDIA OPTIMUS (OFFLOAD CONFIGURATION)
-  services.xserver.videoDrivers = [ "nvidia" ];
+	# NVIDIA on Wayland
+	
+	# Load nvidia/igpu driver for Xorg/Wayland
+  services.xserver.videoDrivers = [
+		"modesetting" # use "amdgpu" here instead if iGPU is AMD
+	  "nvidia"
+	];
+  
+	# Nvidia Settings
   hardware.nvidia = {
     modesetting.enable = true;
-    powerManagement.enable = true;
+    powerManagement.enable = true; # Enable if graphical issues occur after suspend.
+    powerManagement.finegrained = true; # Turns off GPU when not in use (Turing/newer)
     open = false;
-    nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.production;
-
-    prime = {
+    nvidiaSettings = true; # Nvidia settings menu, enable using `nvidia-settings`
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    
+		# Nvidia Optimus PRIME (Offload)
+		prime = {
       offload = {
         enable = true;
         enableOffloadCmd = true;
       };
       intelBusId = "PCI:0:2:0";
-      nvidiaBusId = "PCI:1:0:0";
+      nvidiaBusId = "PCI:1:0:0"; # amdgpuBusId = "PCI:54:0:0"; (AMD GPU example)
     };
   };
 
-  # BOOTLOADER
+  # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # HOST
+  # Host
   networking.hostName = "Tau";
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  # NETWORK PROXY (IF NECESSARY)
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # ENABLE NETWORKING
+  # Networking
   networking.networkmanager.enable = true;
 
-  # TIME ZONE
+  # Timezone
   time.timeZone = "Asia/Kuala_Lumpur";
 
-  # INTERNATIONALISATION PROPERTIES
+  # Locales / Encoding
   i18n.defaultLocale = "en_US.UTF-8";
 
   i18n.extraLocaleSettings = {
@@ -90,10 +95,10 @@
     #media-session.enable = true;
   };
 
-  # TOUCHPAD SUPPORT (ENABLED BY DEFAULT IN MOST DESKTOPMANAGER).
+  # Touchpad Support
   # services.xserver.libinput.enable = true;
 
-  # USER ACCOUNT
+  # User
   users.users.shen = {
     isNormalUser = true;
     description = "shen";
@@ -101,51 +106,58 @@
     packages = with pkgs; [];
   };
 
-  # NIXOS CONFIGURED PACKAGES
+  # System-wide Packages
   programs.steam.enable = true;
   programs.steam.gamescopeSession.enable = true;
   programs.gamemode.enable = true;
 
-  # ALLOW UNFREE PACKAGES
+  # Unfree Packages
   nixpkgs.config.allowUnfree = true;
 
-  # SYSTEM PACKAGES
+  # User Packages
   environment.systemPackages = with pkgs; 
 [
-# Core Utils
-wget
-curl
-git
-neovim
-htop
-xclip
-unzip
-openssh
+	# Core Utils
+  wget 
+	curl
+	wl-clipboard
+	unzip
+	p7zip
+	libarchive
+	flatpak 
+	neovim 
+	htop 
+	openssh
+	fzf 
+	ripgrep 
+	fd
 
-# Dev Tools
-gcc
-gnumake
-cmake
-python3
-nodejs_22
-go
-rustup
-texlive.combined.scheme-full
-R # R Language
-	(rWrapper.override { 
-      		packages = with rPackages; [ languageserver rmarkdown dplyr ggplot2 readr readxl writexl ];
-    	}) # R Packages
+	# Dev Tools
+  git
+	gh
+	gcc 
+	gnumake
+	cmake
+	gfortran 
+	python3 
+	uv
+	tree-sitter-cli 
+	rustup 
+	r 
+		(rWrapper.override { 
+      		packages = with rPackages; [ rmarkdown dplyr ggplot2 readr readxl writexl ];
+    	})
+	typst
 
-# Apps
-kitty
-tmux
-spotify
-zathura
+	# Apps
+  kitty 
+	zathura 
+	libreoffice
 
-# Gnome essentials
-gnomeExtensions.appindicator
-gnomeExtensions.blur-my-shell
-gnome-tweaks
+	# Gnome essentials
+	gnomeExtensions.appindicator
+	gnomeExtensions.blur-my-shell
+	gnome-tweaks
 ];
   
   # SUID WRAPPERS (CAN BE CONFIGURED FURTHER OR STARTED IN USER SESSIONS)
@@ -155,7 +167,7 @@ gnome-tweaks
   #   enableSSHSupport = true;
   # };
 
-  # SYSTEM SERVICES
+  # System Services
   # Flatpak
   services.flatpak.enable = true;
   # Remote, flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
@@ -169,6 +181,6 @@ gnome-tweaks
   # Or disable the firewall altogether.
   networking.firewall.enable = true;
 
-  # SYSTEM STATE VERSION
+  # System State Version
   system.stateVersion = "25.05";
 }
