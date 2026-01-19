@@ -128,8 +128,7 @@
 	cmake
 	gfortran 
 	python3 
-	uv
-	tree-sitter-cli 
+	uv 
 	rustup 
 	typst
 
