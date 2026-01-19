@@ -1,6 +1,6 @@
 # NixOS T_T
 
-A work in progress...
+A work in progress..., Not a "true declarative" config yet.
 
 ### Nvidia PRIME Offload Wrapper Script
 
