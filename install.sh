@@ -5,7 +5,7 @@
 REPO_URL="https://github.com/unlucky-shen/nixos.git"
 CLONE_DIR="$HOME/nixos-config"
 
-# Clone
+# clone
 echo "Cloning from $REPO_URL..."
 rm -rf "$CLONE_DIR"
 git clone "$REPO_URL" "$CLONE_DIR"

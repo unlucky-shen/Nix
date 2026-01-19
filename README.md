@@ -28,6 +28,16 @@ sudo chmod +x /usr/local/bin/nvidia-offload
 ```
 nvidia-offload gamemoderun gamescope -w 1920 -h 1080 -- %command%
 ```
+
+### Install
+```bash
+curl https://raw.githubusercontent.com/unlucky-shen/nixos/main/install.sh > install.sh
+
+chmod +x ./install.sh
+
+./install.sh
+```
+
 ### Todo List
 - [ ] Migrate config to flakes
 - [ ] Change neovim config to nixvim
