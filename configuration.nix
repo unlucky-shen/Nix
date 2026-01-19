@@ -3,12 +3,12 @@
 {
   imports =
     [
-      ./hardware-configuration.nix
+    	./hardware-configuration.nix
     ];
   
-		boot.kernelParams = [ 
-  "nvidia-drm.modeset=1"
-  "nvidia-drm.fbdev=1"
+	boot.kernelParams = [ 
+  	"nvidia-drm.modeset=1"
+  	"nvidia-drm.fbdev=1"
 	];
 
   # Nvidia + PRIME Offload
@@ -66,7 +66,7 @@
 
 	# GNOME
   services.xserver.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  services.desktopManager.gnome.enable = true;
 
   # Gdm
   services.displayManager.gdm.enable = true;
@@ -90,11 +90,10 @@
     packages = with pkgs; [];
   };
 
+  # Flakes
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   # Enable Programs 
-  programs.neovim = {
-		enable = true;
-		defaultEditor = true;
-	};
   programs.steam.enable = true;
   programs.steam.gamescopeSession.enable = true;
   programs.gamemode.enable = true;
@@ -108,6 +107,7 @@
 	# core utils
   wget 
 	curl
+	neovim
 	xclip
 	wl-clipboard
 	unzip
@@ -119,29 +119,41 @@
 	fzf 
 	ripgrep 
 	fd
+	eza
+	bat
 
-	# dev Tools
-  git
+	# dev tools
+	git
 	gh
 	gcc 
 	gnumake
 	cmake
 	gfortran 
 	python3 
-	uv
-	tree-sitter-cli 
+	uv 
 	rustup 
 	typst
+	starship
+
+	# lsp
+	clang-tools
+	lua-language-server
+	rust-analyzer
+	tinymist
 
 	# apps
   kitty 
 	zathura 
 	libreoffice
+	fastfetch
 
 	# Gnome essentials
 	gnomeExtensions.appindicator
 	gnomeExtensions.blur-my-shell
 	gnome-tweaks
+
+	# Misc.
+	bibata-cursors
 ];
   
 	# Fonts
