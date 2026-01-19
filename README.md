@@ -2,7 +2,7 @@
 
 A work in progress...
 
-### Nvidia Optimus PRIME Wrapper Script
+### Nvidia PRIME Offload Wrapper Script
 
 I. Create the script,
 ```
