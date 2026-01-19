@@ -29,6 +29,19 @@
       nvidiaBusId = "PCI:1:0:0";
     };
   };
+  
+	# Wayland
+	environment.sessionVariables = {
+    LIBVA_DRIVER_NAME = "nvidia";
+    XDG_SESSION_TYPE = "wayland";
+    GBM_BACKEND = "nvidia-drm";
+    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+    WLR_NO_HARDWARE_CURSORS = "1";
+    NIXOS_OZONE_WL = "1";
+  };
+
+	# Hyprland
+	programs.hyprland.enable = true;
 
 	# Systemd-boot
   boot.loader.systemd-boot.enable = true;
@@ -55,12 +68,9 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  # ENABLE X11 WINDOWING SYSTEM
+  # Gdm
   services.xserver.enable = true;
-
-  # ENABLE GNOME DESKTOP ENVIRONMENT
   services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
 
   # Pipewire 
   services.pulseaudio.enable = false;
@@ -127,10 +137,12 @@
 	zathura 
 	libreoffice
 
-	# Gnome essentials
-	gnomeExtensions.appindicator
-	gnomeExtensions.blur-my-shell
-	gnome-tweaks
+	# wayland 
+	waybar
+  rofi-wayland
+  swww
+  mako
+  libnotify
 ];
   
 	# Flatpak
@@ -138,6 +150,4 @@
   # Remote, flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
   
 	networking.firewall.enable = true;
-
-	system.stateVersion = "25.11";
 }
