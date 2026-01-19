@@ -6,6 +6,11 @@
       ./hardware-configuration.nix
     ];
   
+		boot.kernelParams = [ 
+  "nvidia-drm.modeset=1"
+  "nvidia-drm.fbdev=1"
+	];
+
   # Nvidia + PRIME Offload
   services.xserver.videoDrivers = [
 		"modesetting"
@@ -29,6 +34,10 @@
       nvidiaBusId = "PCI:1:0:0";
     };
   };
+
+	environment.sessionVariables = {
+  	NIXOS_OZONE_WL = "1";
+	};
 
 	# Systemd-boot
   boot.loader.systemd-boot.enable = true;
@@ -55,12 +64,13 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  # ENABLE X11 WINDOWING SYSTEM
+	# GNOME
   services.xserver.enable = true;
-
-  # ENABLE GNOME DESKTOP ENVIRONMENT
-  services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
+
+  # Gdm
+  services.displayManager.gdm.enable = true;
+  services.displayManager.gdm.wayland = true;
 
   # Pipewire 
   services.pulseaudio.enable = false;
@@ -98,6 +108,7 @@
 	# core utils
   wget 
 	curl
+	xclip
 	wl-clipboard
 	unzip
 	p7zip
@@ -133,11 +144,17 @@
 	gnome-tweaks
 ];
   
+	# Fonts
+	fonts.packages = with pkgs; [
+    nerd-fonts.symbols-only
+    nerd-fonts.jetbrains-mono
+  ];
+
 	# Flatpak
   services.flatpak.enable = true;
-  # Remote, flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
   
+	# Firewall
 	networking.firewall.enable = true;
 
-	system.stateVersion = "25.11";
+	system.stateVersion = "25.11"; # Jangan sial
 }
