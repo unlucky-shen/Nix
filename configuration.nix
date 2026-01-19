@@ -1,17 +1,13 @@
 { config, pkgs, lib, ... }:
-
 {
-  imports =
-    [
-    	./hardware-configuration.nix
-    ];
+  imports = [ ./hardware-configuration.nix ];
   
 	boot.kernelParams = [ 
   	"nvidia-drm.modeset=1"
   	"nvidia-drm.fbdev=1"
 	];
 
-  # Nvidia + PRIME Offload
+  # Nvidia PRIME Offload
   services.xserver.videoDrivers = [
 		"modesetting"
 	  "nvidia"
@@ -43,28 +39,11 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # Host
-  networking.hostName = "Tau";
+  networking.hostName = "Tau"; # Host
 
-  # Wifi 
-  networking.networkmanager.enable = true;
+  networking.networkmanager.enable = true; # Wifi
 
-  # Timezone/Locales
-  time.timeZone = "Asia/Kuala_Lumpur";
-  i18n.defaultLocale = "en_US.UTF-8";
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
-  };
-
-	# GNOME
+	# DE
   services.xserver.enable = true;
   services.desktopManager.gnome.enable = true;
 
@@ -90,18 +69,11 @@
     packages = with pkgs; [];
   };
 
-  # Flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  # Enable Programs 
+  # Programs 
   programs.steam.enable = true;
   programs.steam.gamescopeSession.enable = true;
   programs.gamemode.enable = true;
 
-  # Unfree Packages
-  nixpkgs.config.allowUnfree = true;
-
-  # User Packages
   environment.systemPackages = with pkgs; 
 [
 	# core utils
@@ -152,7 +124,7 @@
 	gnomeExtensions.blur-my-shell
 	gnome-tweaks
 
-	# Misc.
+	# Misc
 	bibata-cursors
 ];
   
@@ -162,11 +134,13 @@
     nerd-fonts.jetbrains-mono
   ];
 
-	# Flatpak
+	# Services
   services.flatpak.enable = true;
+	services.openssh.enable = true;
   
-	# Firewall
-	networking.firewall.enable = true;
+	networking.firewall.enable = true; # Firewall
 
-	system.stateVersion = "25.11"; # Jangan sial
+	nixpkgs.config.allowUnfree = true;
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+	system.stateVersion = "25.11";
 }
