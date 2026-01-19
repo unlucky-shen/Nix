@@ -1,5 +1,7 @@
 # NixOS T_T
 
+A work in progress...
+
 ### Nvidia Optimus PRIME Wrapper Script
 
 I. Create the script,
