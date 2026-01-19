@@ -1,56 +1,48 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports =
     [
       ./hardware-configuration.nix
     ];
-
-	# NVIDIA on Wayland
-	
-	# Load nvidia/igpu driver for Xorg/Wayland
+  
+  # Nvidia + PRIME Offload
   services.xserver.videoDrivers = [
-		"modesetting" # use "amdgpu" here instead if iGPU is AMD
+		"modesetting"
 	  "nvidia"
 	];
   
-	# Nvidia Settings
   hardware.nvidia = {
     modesetting.enable = true;
-    powerManagement.enable = true; # Enable if graphical issues occur after suspend.
-    powerManagement.finegrained = true; # Turns off GPU when not in use (Turing/newer)
+    powerManagement.enable = true;
+    powerManagement.finegrained = true;
     open = false;
-    nvidiaSettings = true; # Nvidia settings menu, enable using `nvidia-settings`
+    nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
     
-		# Nvidia Optimus PRIME (Offload)
 		prime = {
       offload = {
         enable = true;
         enableOffloadCmd = true;
       };
       intelBusId = "PCI:0:2:0";
-      nvidiaBusId = "PCI:1:0:0"; # amdgpuBusId = "PCI:54:0:0"; (AMD GPU example)
+      nvidiaBusId = "PCI:1:0:0";
     };
   };
 
-  # Bootloader
+	# Systemd-boot
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Host
   networking.hostName = "Tau";
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  # Networking
+  # Wifi 
   networking.networkmanager.enable = true;
 
-  # Timezone
+  # Timezone/Locales
   time.timeZone = "Asia/Kuala_Lumpur";
-
-  # Locales / Encoding
   i18n.defaultLocale = "en_US.UTF-8";
-
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_US.UTF-8";
     LC_IDENTIFICATION = "en_US.UTF-8";
@@ -70,16 +62,7 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
-  # CONFIGURE KEYMAP IN X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
-
-  # CUPS FOR DOCUMENT PRINTING
-  # services.printing.enable = true;
-
-  # ENABLE SOUND (PIPEWIRE)
+  # Pipewire 
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -87,26 +70,21 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
   };
 
-  # Touchpad Support
-  # services.xserver.libinput.enable = true;
-
   # User
-  users.users.shen = {
+  users.users.tau= {
     isNormalUser = true;
     description = "shen";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [];
   };
 
-  # System-wide Packages
+  # Enable Programs 
+  programs.neovim = {
+		enable = true;
+		defaultEditor = true;
+	};
   programs.steam.enable = true;
   programs.steam.gamescopeSession.enable = true;
   programs.gamemode.enable = true;
@@ -117,7 +95,7 @@
   # User Packages
   environment.systemPackages = with pkgs; 
 [
-	# Core Utils
+	# core utils
   wget 
 	curl
 	wl-clipboard
@@ -125,14 +103,13 @@
 	p7zip
 	libarchive
 	flatpak 
-	neovim 
 	htop 
 	openssh
 	fzf 
 	ripgrep 
 	fd
 
-	# Dev Tools
+	# dev Tools
   git
 	gh
 	gcc 
@@ -143,13 +120,9 @@
 	uv
 	tree-sitter-cli 
 	rustup 
-	r 
-		(rWrapper.override { 
-      		packages = with rPackages; [ rmarkdown dplyr ggplot2 readr readxl writexl ];
-    	})
 	typst
 
-	# Apps
+	# apps
   kitty 
 	zathura 
 	libreoffice
@@ -160,27 +133,9 @@
 	gnome-tweaks
 ];
   
-  # SUID WRAPPERS (CAN BE CONFIGURED FURTHER OR STARTED IN USER SESSIONS)
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # System Services
-  # Flatpak
+	# Flatpak
   services.flatpak.enable = true;
   # Remote, flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-
-  # Openssh Daemon
-  # services.openssh.enable = true;
-
-  # Firewall Ports
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  networking.firewall.enable = true;
-
-  # System State Version
-  system.stateVersion = "25.05";
+  
+	networking.firewall.enable = true;
 }
