@@ -84,6 +84,9 @@
 [
 	# core utils
   wget curl neovim xclip wl-clipboard unzip p7zip libarchive flatpak htop openssh fzf ripgrep fd eza bat auto-cpufreq networkmanagerapplet
+	
+	# Hyprland
+	hyprpolkitagent dunst waybar wofi swww hyprsunset hypridle kdePackages.dolphin udiskie ntfs3g exfat
 
 	# dev tools
 	git gcc gnumake cmake gfortran python3 uv rustup typst starship
@@ -94,8 +97,6 @@
 	# apps
   kitty zathura libreoffice fastfetch
 
-	# Hyprland essentials
-	hyprpolkitagent dunst waybar wofi swww hyprsunset hypridle kdePackages.dolphin udiskie ntfs3g exfat
 
 	# Misc
 	bibata-cursors

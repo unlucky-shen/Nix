@@ -32,6 +32,8 @@ echo "
 #######################
 "
 cd "$CLONE_DIR/"
+sudo cp auto-cpufreq.conf /etc/
+sudo cp .bashrc /home/tau/
 sudo cp starship.toml /home/tau/.config/
 sudo cp -r hypr/ /home/tau/.config/
 chmod +x nixssh.sh
