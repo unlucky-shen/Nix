@@ -42,11 +42,6 @@
     	extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
   	};
 
-	xdg.userDirs = {
-  		enable = true;
-  		createDirectories = true;
-	};
-
 	# Systemd-boot
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
