@@ -52,6 +52,7 @@
 
 	# Hyprland
 	programs.hyprland = {
+    nvidiaPatches = true;
   	enable = true;
   	xwayland.enable = true; # Ensures legacy X11 apps still work
 	};
@@ -140,3 +141,4 @@
 	
 	system.stateVersion = "25.11";
 }
+
