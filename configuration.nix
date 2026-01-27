@@ -104,7 +104,7 @@
   environment.systemPackages = with pkgs; 
 [
 	# core utils
-  wget curl neovim xclip wl-clipboard unzip p7zip libarchive flatpak htop openssh fzf ripgrep fd eza bat auto-cpufreq
+  	wget curl neovim xclip wl-clipboard unzip p7zip libarchive flatpak htop openssh fzf ripgrep fd eza bat auto-cpufreq networkmanagerapplet
 
 	# dev tools
 	git gcc gnumake cmake gfortran python3 uv rustup typst starship
@@ -113,11 +113,8 @@
 	clang-tools lua-language-server rust-analyzer tinymist
 
 	# apps
-  kitty zathura libreoffice fastfetch
+  	kitty zathura libreoffice fastfetch
 
-	# Greeter
-	greetd tuigreet
-	
 	# Hyprland essentials
 	hyprpolkitagent dunst waybar wofi swww hyprsunset hypridle
 
@@ -141,6 +138,7 @@
 	
 	system.stateVersion = "25.11";
 }
+
 
 
 
