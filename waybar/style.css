@@ -44,16 +44,34 @@ tooltip label {
 
 #clock {
 	  background-color: #343434;
-    color: white;
+    color: #458588;
 		font-weight: 700;
 		padding: 0 15px;
 		margin: 0 4px;
 		border-radius: 70px;
 }
 
-#battery, #pulseaudio, #network {
+#battery {
     background-color: #343434;
-    color: white;
+    color: #A9B665;
+		font-weight: 700;
+		padding: 0 15px;
+		margin: 0 4px;
+		border-radius: 70px;
+}
+
+#pulseaudio {
+    background-color: #343434;
+    color: #E78A4E;
+		font-weight: 700;
+		padding: 0 15px;
+		margin: 0 4px;
+		border-radius: 70px;
+}
+
+#network {
+    background-color: #343434;
+    color: #D3869B;
 		font-weight: 700;
 		padding: 0 15px;
 		margin: 0 4px;
