@@ -70,7 +70,7 @@
   # user
   users.users.tau= {
     isNormalUser = true;
-    description = "shen";
+    description = "tau";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [];
   };
