@@ -1,6 +1,6 @@
 * {
     border: none;
-    border-radius: 70;
+    border-radius: 50;
     font-family: "SF Pro Rounded", "JetBrainsMono Nerd Font Propo", sans-serif;
     font-size: 14px;
     font-weight: 700;
@@ -30,7 +30,7 @@ tooltip label {
 		margin: 0 4px;
     background: #343434;
     color: white;
-		border-radius: 70px;
+		border-radius: 50px;
 		font-weight: 700;
 }
 
@@ -38,7 +38,7 @@ tooltip label {
     min-width: 20px;
 		background: #343434;
 		color: white;
-		border-radius: 70px;
+		border-radius: 50px;
 	  font-weight: 700;
 }
 
@@ -48,7 +48,7 @@ tooltip label {
 		font-weight: 700;
 		padding: 0 15px;
 		margin: 0 4px;
-		border-radius: 70px;
+		border-radius: 50px;
 }
 
 #battery {
@@ -57,7 +57,7 @@ tooltip label {
 		font-weight: 700;
 		padding: 0 15px;
 		margin: 0 4px;
-		border-radius: 70px;
+		border-radius: 50px;
 }
 
 #pulseaudio {
@@ -66,7 +66,7 @@ tooltip label {
 		font-weight: 700;
 		padding: 0 15px;
 		margin: 0 4px;
-		border-radius: 70px;
+		border-radius: 50px;
 }
 
 #network {
@@ -75,5 +75,5 @@ tooltip label {
 		font-weight: 700;
 		padding: 0 15px;
 		margin: 0 4px;
-		border-radius: 70px;
+		border-radius: 50px;
 }
