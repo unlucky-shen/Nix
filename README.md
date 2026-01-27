@@ -1,6 +1,6 @@
 # NixOS T_T
 
-A work in progress..., Not a "true declarative" config yet.
+A work in progress..., Not a "true declarative" config yet (skill issue).
 
 ### Nvidia PRIME Offload Wrapper Script
 
@@ -31,14 +31,14 @@ nvidia-offload gamemoderun gamescope -w 1920 -h 1080 -- %command%
 
 ### Install
 ```bash
-curl https://raw.githubusercontent.com/unlucky-shen/nixos/main/install.sh > install.sh
+curl https://raw.githubusercontent.com/unlucky-shen/nixos/main/nixify.sh > nixify.sh
 
-chmod +x ./install.sh
+chmod +x ./nixify.sh
 
-./install.sh
+./nixify.sh
 ```
 
 ### Todo List
-- [ ] Migrate config to flakes
+- [ ] Migrate config to flakes, will take time tho (skill issue)
 - [ ] Change neovim config to nixvim
-- [ ] Change DE to WM (Hyprland) 
+- [x] Change DE to WM (Hyprland) 

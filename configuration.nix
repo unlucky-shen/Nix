@@ -2,18 +2,13 @@
 {
   imports = [ ./hardware-configuration.nix ];
   
-	boot.kernelParams = [ 
-		"nvidia-drm.modeset=1" 
-		"nvidia-drm.fbdev=1" 
-		"nvidia.NVreg_TemporaryFilePath=/var/tmp"
-	];
+	boot.kernelParams = [ "nvidia-drm.modeset=1" "nvidia-drm.fbdev=1" "nvidia.NVreg_TemporaryFilePath=/var/tmp" ];
 
-	services.xserver.videoDrivers = [ 
-		"modesetting" 
-		"nvidia" 
-	];
+	services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
+
+	boot.supportedFilesystems = [ "ntfs" "exfat" ];
   
-	# fxck nvidia
+	# nvidia PRIME offload
 	hardware.nvidia = {
     modesetting.enable = true;
     powerManagement.enable = true;
@@ -32,7 +27,7 @@
     };
   };
 
-	# fxck wayland too
+	# wayland tweaks
 	environment.sessionVariables = {
   	NIXOS_OZONE_WL = "1";
 	};
@@ -42,37 +37,27 @@
     	extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
   	};
 
-	# Systemd-boot
+	# systemd-boot
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "Tau"; # Host
+  networking.hostName = "Tau";
 
-  networking.networkmanager.enable = true; # Wifi
+  networking.networkmanager.enable = true;
 
-	# Hyprland
+	# hyprland
 	programs.hyprland = {
   	enable = true;
-  	xwayland.enable = true; # Ensures legacy X11 apps still work
+  	xwayland.enable = true;
 	};
 
-	# Greeter
+	# sddm
 	services.displayManager.sddm = {
     	enable = true;
     	wayland.enable = true;
   	};
 
-	systemd.services.greetd.serviceConfig = {
-  	Type = "idle";
-  	StandardInput = "tty";
-  	StandardOutput = "null";
-  	StandardError = "journal";
-  	TTYReset = true;
-  	TTYVHangup = true;
-  	TTYVTDisallocate = true;
-	};
-
-  # Pipewire 
+  # sound
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -82,7 +67,7 @@
     pulse.enable = true;
   };
 
-  # User
+  # user
   users.users.tau= {
     isNormalUser = true;
     description = "shen";
@@ -90,7 +75,7 @@
     packages = with pkgs; [];
   };
 
-  # Programs 
+  # programs 
   programs.steam.enable = true;
   programs.steam.gamescopeSession.enable = true;
   programs.gamemode.enable = true;
@@ -98,7 +83,7 @@
   environment.systemPackages = with pkgs; 
 [
 	# core utils
-  	wget curl neovim xclip wl-clipboard unzip p7zip libarchive flatpak htop openssh fzf ripgrep fd eza bat auto-cpufreq networkmanagerapplet
+  wget curl neovim xclip wl-clipboard unzip p7zip libarchive flatpak htop openssh fzf ripgrep fd eza bat auto-cpufreq networkmanagerapplet
 
 	# dev tools
 	git gcc gnumake cmake gfortran python3 uv rustup typst starship
@@ -107,32 +92,29 @@
 	clang-tools lua-language-server rust-analyzer tinymist
 
 	# apps
-  	kitty zathura libreoffice fastfetch
+  kitty zathura libreoffice fastfetch
 
 	# Hyprland essentials
-	hyprpolkitagent dunst waybar wofi swww hyprsunset hypridle
+	hyprpolkitagent dunst waybar wofi swww hyprsunset hypridle kdePackages.dolphin udiskie ntfs3g exfat
 
 	# Misc
 	bibata-cursors
 ];
   
-	# Fonts
+	# fonts
 	fonts.packages = with pkgs; [
     nerd-fonts.symbols-only
     nerd-fonts.jetbrains-mono
   ];
 
-	# Services
+	# services
   services.flatpak.enable = true;
 	services.openssh.enable = true;
+	services.udisks2.enable = true;
   
-	networking.firewall.enable = true; # Firewall
+	networking.firewall.enable = true;
 
 	nixpkgs.config.allowUnfree = true;
 	
 	system.stateVersion = "25.11";
 }
-
-
-
-
