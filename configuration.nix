@@ -63,15 +63,10 @@
 	};
 
 	# Greeter
-	services.greetd = {
-  enable = true;
-  	settings = {
-    	default_session = {
-      	command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd 'uwsm start hyprland-uwsm.desktop'";
-      	user = "greeter";
-    	};
+	services.displayManager.sddm = {
+    	enable = true;
+    	wayland.enable = true;
   	};
-	};
 
 	systemd.services.greetd.serviceConfig = {
   	Type = "idle";
@@ -146,5 +141,6 @@
 	
 	system.stateVersion = "25.11";
 }
+
 
 
