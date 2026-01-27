@@ -7,16 +7,17 @@
     "margin-bottom": 1,
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["clock"],
-    "modules-right": ["network", "pulseaudio", "battery"],
+    "modules-right": ["tray", "network", "pulseaudio", "battery"],
 
     "battery": {
         "format": "{icon}  {capacity}%",
-        "format-icons": ["", "", "", "", ""]
+        "format-icons": ["", "", "", "", ""],
+				"on-click": "~/.config/waybar/power.sh"
     },
 
     "clock": {
-        "format": "{:%H:%M}",
-        "format-alt": "{:%a, %d. %b %H:%M}"
+        "format": "󱑁  {:%H:%M}",
+        "format-alt": "  {:%a, %d. %b %H:%M}"
     },
 
     "pulseaudio": {
@@ -43,7 +44,12 @@
         "format-ethernet": "{ipaddr}/{cidr} 󰊗",
         "format-disconnected": "Disconnected ⚠",
         "tooltip-format": "{ifname} via {gwaddr} 󰊗",
-        "max-length": 50
+        "max-length": 50,
+				"on-click": "nm-connection-editor",
+				"tray": {
+        	"icon-size": 21,
+        	"spacing": 10
+    		}
     },
 
 		"hyprland/workspaces": {
@@ -54,6 +60,11 @@
         	"default": ""
     	},
     	"sort-by-number": true
-		}
+		},
 
+		"tray": {
+        "icon-size": 16,
+        "spacing": 10
+    }
+	
 }

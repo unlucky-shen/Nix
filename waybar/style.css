@@ -29,7 +29,7 @@ tooltip label {
     padding: 0 15px;
 		margin: 0 4px;
     background: #343434;
-    color: white;
+    color: #90D5FF;
 		border-radius: 50px;
 		font-weight: 700;
 }
@@ -37,7 +37,7 @@ tooltip label {
 #workspaces button.active{
     min-width: 20px;
 		background: #343434;
-		color: white;
+		color: #90D5FF;
 		border-radius: 50px;
 	  font-weight: 700;
 }
@@ -77,3 +77,25 @@ tooltip label {
 		margin: 0 4px;
 		border-radius: 50px;
 }
+
+#tray {
+    padding: 0 15px;
+    background-color: #343434;
+    color: #A89984;
+		border-radius: 50px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+    background-color: #343434;
+    color: #A89984;
+		border-radius: 50px;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #343434;
+    color: #A89984;
+		border-radius: 50px;
+}
+
