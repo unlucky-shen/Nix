@@ -12,7 +12,7 @@
 		"nvidia" 
 	];
   
-	# fxck nvidia
+	# nvidia PRIME offload
 	hardware.nvidia = {
     modesetting.enable = true;
     powerManagement.enable = true;
@@ -31,7 +31,7 @@
     };
   };
 
-	# fxck wayland too
+	# wayland tweaks
 	environment.sessionVariables = {
   	NIXOS_OZONE_WL = "1";
 	};
@@ -42,3 +42,4 @@
   };
 
 }
+
