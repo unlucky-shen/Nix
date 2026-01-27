@@ -38,9 +38,14 @@
 	};
 
 	xdg.portal = {
-    enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
-  };
+    	enable = true;
+    	extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
+  	};
+
+	xdg.userDirs = {
+  		enable = true;
+  		createDirectories = true;
+	};
 
 	# Systemd-boot
   boot.loader.systemd-boot.enable = true;
@@ -141,4 +146,5 @@
 	
 	system.stateVersion = "25.11";
 }
+
 
