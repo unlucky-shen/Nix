@@ -39,11 +39,11 @@ echo " Adding SSH key to ssh-agent... "
 ssh-add "$SSH_KEY"
 
 # Public key
-echo
-echo " Public Key: "
-echo "################################################################"
-cat "${SSH_KEY}.pub"
-echo "################################################################"
+# echo
+# echo " Public Key: "
+# echo "################################################################"
+# cat "${SSH_KEY}.pub"
+# echo "################################################################"
 
 echo
 echo "Setup complete!"
