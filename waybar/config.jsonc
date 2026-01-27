@@ -2,6 +2,7 @@
     "layer": "top",
     "position": "top",
     "width": 1920,
+    "height": 25,
     "margin-top": 4,
     "margin-bottom": 1,
     "modules-left": ["hyprland/workspaces"],
@@ -9,7 +10,7 @@
     "modules-right": ["network", "pulseaudio", "battery"],
 
     "battery": {
-        "format": " {icon} {capacity}%",
+        "format": "{icon}  {capacity}%",
         "format-icons": ["", "", "", "", ""]
     },
 
@@ -19,7 +20,7 @@
     },
 
     "pulseaudio": {
-        "format": "{icon} {volume}%",
+        "format": "{icon}  {volume}%",
         "format-bluetooth": "{icon} {volume}%",
         "format-muted": "",
         "format-icons": {
@@ -38,7 +39,7 @@
 
     "network": {
         "interface": "wlo1",
-        "format-wifi": "  {essid}",
+        "format-wifi": "   {essid}",
         "format-ethernet": "{ipaddr}/{cidr} 󰊗",
         "format-disconnected": "Disconnected ⚠",
         "tooltip-format": "{ifname} via {gwaddr} 󰊗",
@@ -46,21 +47,13 @@
     },
 
 		"hyprland/workspaces": {
-    "format": "{icon}",
-    "on-click": "activate",
-    "all-outputs": false,
-    "sort-by-number": true,
-    "format-icons": {
-        "1": "1",
-        "2": "2",
-        "3": "3",
-        "4": "4",
-        "active": "",
-        "default": ""
-    },
-    "persistent-workspaces": {
-        "*": 4
-    }
-	}
+    	"format": "{icon}",
+    	"on-click": "activate",
+    	"format-icons": {
+        	"active": "",
+        	"default": ""
+    	},
+    	"sort-by-number": true
+		}
 
 }
