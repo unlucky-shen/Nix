@@ -37,6 +37,8 @@ sudo cp .bashrc /home/tau/
 sudo cp starship.toml /home/tau/.config/
 sudo cp -r hypr/ /home/tau/.config/
 sudo cp -r waybar/ /home/tau/.config/
+sudo cp -r wofi/ /home/tau/.config/
+sudo cp -r fastfetch/ /home/tau/.config/
 chmod +x nixssh.sh
 ./nixssh.sh
 cd ~
