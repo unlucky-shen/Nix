@@ -44,7 +44,7 @@ tooltip label {
 
 #clock {
 	  background-color: #343434;
-    color: #458588;
+    color: #89B482;
 		font-weight: 700;
 		padding: 0 15px;
 		margin: 0 4px;
@@ -53,7 +53,7 @@ tooltip label {
 
 #battery {
     background-color: #343434;
-    color: #A9B665;
+    color: #D4BE98;
 		font-weight: 700;
 		padding: 0 15px;
 		margin: 0 4px;
@@ -62,7 +62,7 @@ tooltip label {
 
 #pulseaudio {
     background-color: #343434;
-    color: #E78A4E;
+    color: #D8A657;
 		font-weight: 700;
 		padding: 0 15px;
 		margin: 0 4px;
