@@ -1,6 +1,6 @@
 # NixOS Setup
 
-![Nix Hyprland](nix.png)
+![Nix Hyprland](view.png)
 
 A work in progress..., Not a "true declarative" config yet (skill issue).
 
