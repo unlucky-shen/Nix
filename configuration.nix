@@ -10,7 +10,7 @@
 	hardware.nvidia = {
     modesetting.enable = true;
     powerManagement.enable = true;
-    powerManagement.finegrained = true;
+    powerManagement.finegrained = false;
     open = false;
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
@@ -74,6 +74,7 @@
   };
 
   # programs 
+  programs.hyprlock.enable = true;
   programs.steam.enable = true;
   programs.steam.gamescopeSession.enable = true;
   programs.gamemode.enable = true;
@@ -93,7 +94,7 @@
   	kitty zathura libreoffice fastfetch
 
 		# hyprland essentials
-		hyprpolkitagent dunst waybar libappindicator libayatana-appindicator wofi swww hyprsunset hypridle hyprshot kdePackages.dolphin udiskie ntfs3g exfat
+		hyprpolkitagent dunst waybar libappindicator libayatana-appindicator wofi swww hyprsunset hypridle hyprshot hyprlock kdePackages.dolphin udiskie ntfs3g exfat
 
 		# Misc
 		bibata-cursors
