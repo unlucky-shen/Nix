@@ -40,8 +40,8 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "Tau";
-
   networking.networkmanager.enable = true;
+  time.timeZone = "Asia/Kuala_Lumpur";
 
 	# hyprland
 	programs.hyprland = {
