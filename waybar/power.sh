@@ -1,6 +1,6 @@
 #!/bin/sh
 
-entries=" Suspend\n  Restart\n  Power Off"
+entries="1. Suspend\n2. Restart\n3. Power Off"
 
 selected=$(echo -e $entries | wofi --dmenu --cache-file /dev/null | awk '{print $2}')
 
