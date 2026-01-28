@@ -26,7 +26,7 @@ tooltip label {
 }
 
 #workspaces button {
-    padding: 5 15px;
+    padding: 5px 15px;
 		margin: 0 4px;
     background: #343434;
     color: #90D5FF;
@@ -46,7 +46,7 @@ tooltip label {
 	  background-color: #343434;
     color: #89B482;
 		font-weight: 700;
-		padding: 5 15px;
+		padding: 5px 15px;
 		margin: 0 4px;
 		border-radius: 50px;
 }
@@ -55,7 +55,7 @@ tooltip label {
     background-color: #343434;
     color: #D4BE98;
 		font-weight: 700;
-		padding: 5 15px;
+		padding: 5px 15px;
 		margin: 0 4px;
 		border-radius: 50px;
 }
@@ -64,7 +64,7 @@ tooltip label {
     background-color: #343434;
     color: #D8A657;
 		font-weight: 700;
-		padding: 5 15px;
+		padding: 5px 15px;
 		margin: 0 4px;
 		border-radius: 50px;
 }
@@ -73,13 +73,13 @@ tooltip label {
     background-color: #343434;
     color: #D3869B;
 		font-weight: 700;
-		padding: 5 15px;
+		padding: 5px 15px;
 		margin: 0 4px;
 		border-radius: 50px;
 }
 
 #tray {
-    padding: 5 15px;
+    padding: 5px 15px;
     background-color: #343434;
     color: #A89984;
 		border-radius: 50px;
