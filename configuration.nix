@@ -3,12 +3,10 @@
   imports = [ ./hardware-configuration.nix ];
   
 	boot.kernelParams = [ "nvidia-drm.modeset=1" "nvidia-drm.fbdev=1" "nvidia.NVreg_TemporaryFilePath=/var/tmp" ];
-
-	services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
-
 	boot.supportedFilesystems = [ "ntfs" "exfat" ];
-  
-	# nvidia PRIME offload
+	
+	# nvidia + PRIME offload
+	services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
 	hardware.nvidia = {
     modesetting.enable = true;
     powerManagement.enable = true;
@@ -81,26 +79,25 @@
   programs.gamemode.enable = true;
   programs.nm-applet.enable = true;
 
-  environment.systemPackages = with pkgs; 
-[
-	# core utils
+  environment.systemPackages = with pkgs; [
+		# core utils
   	wget curl neovim xclip wl-clipboard unzip p7zip libarchive flatpak htop openssh fzf ripgrep fd eza bat auto-cpufreq killall networkmanagerapplet
 
-	# dev tools
-	git gcc gnumake cmake gfortran python3 uv rustup typst starship
+		# dev tools
+		git gcc gnumake cmake gfortran python3 uv rustup typst starship
 
-	# lsp
-	clang-tools lua-language-server rust-analyzer tinymist
+		# lsp
+		clang-tools lua-language-server rust-analyzer tinymist
 
-	# apps
+		# apps
   	kitty zathura libreoffice fastfetch
 
-	# Hyprland essentials
-	hyprpolkitagent dunst waybar libappindicator libayatana-appindicator wofi swww hyprsunset hypridle hyprshot kdePackages.dolphin udiskie ntfs3g exfat
+		# hyprland essentials
+		hyprpolkitagent dunst waybar libappindicator libayatana-appindicator wofi swww hyprsunset hypridle hyprshot kdePackages.dolphin udiskie ntfs3g exfat
 
-	# Misc
-	bibata-cursors
-];
+		# Misc
+		bibata-cursors
+	];
   
 	# fonts
 	fonts.packages = with pkgs; [
