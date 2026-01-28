@@ -1,4 +1,6 @@
-# NixOS T_T
+# NixOS Setup
+
+![Nix Hyprland](nix.png)
 
 A work in progress..., Not a "true declarative" config yet (skill issue).
 
